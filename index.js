@@ -28,5 +28,4 @@ discover(uri, config)
   .catch(err => {
     console.error(err)
   })
- //res.json(["Tony","Lisa","Michael","Ginger","Food"]);
 });
