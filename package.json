@@ -1,0 +1,10 @@
+{
+  "name": "nodeapp",
+  "version": "0.0.1",
+  "description": "REST service for torrent index requests",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "scrape-torrent-stats": "0.0.2"
+  }
+}
