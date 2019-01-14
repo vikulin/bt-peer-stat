@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.4",
+    "hapi": "^17.8.1",
     "scrape-torrent-stats": "0.0.2"
   }
 }

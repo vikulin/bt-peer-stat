@@ -1,31 +1,22 @@
-var express = require("express");
-const { discover } = require('scrape-torrent-stats')
-var app = express();
-app.listen(3000, () => {
- console.log("Server running on port 3000");
+
+const Hapi = require('hapi');
+
+const host = '172.16.0.106';
+const port = 3000; 
+
+const server = Hapi.Server({
+    host: host,
+    port: port
 });
 
+const init = async () => {
 
-const config = {
-  source: 'dht',
-  waitTime: 10000 // 10 second wait before closing peer search
+    await server.start();
+    console.log("Server up and running at port: " + port);
+
 }
 
-app.get("/peers/:infohash", (req, res, next) => {
+//Setup the routes
+require('./routes/routes')(server);
 
- var infohash = req.params.infohash;
- 
-// ubuntu desktop magnet uri
-const uri =
-  'magnet:?xt=urn:btih:'.concat(infohash);
-	
-discover(uri, config)
-  .then(result => {
-    console.log(result)
-    // Structure of result object can be seen further down
-	res.json(result);
-     })
-  .catch(err => {
-    console.error(err)
-  })
-});
+init();
